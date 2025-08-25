@@ -1,19 +1,22 @@
 # AntiPieRay configuration
 
 # Block entities to filter when they are NOT visible to the player (via ray-cast)
-# This list covers essentially all standard block entities as of 1.21.
+# This list covers essentially all standard block entities as of 1.21 (expanded).
 restricted-entities:
   - minecraft:banner
   - minecraft:bed
-  - minecraft:beehive            # includes bee nests (same BE type)
+  - minecraft:beehive
+  - minecraft:bee_nest
   - minecraft:bell
   - minecraft:blast_furnace
   - minecraft:brewing_stand
-  - minecraft:brushable_block    # suspicious sand/gravel
-  - minecraft:campfire           # covers soul campfires
-  - minecraft:chest              # includes trapped/double chests
+  - minecraft:brushable_block
+  - minecraft:campfire
+  - minecraft:soul_campfire
+  - minecraft:chest
+  - minecraft:trapped_chest
   - minecraft:chiseled_bookshelf
-  - minecraft:command_block      # covers repeating/chain command blocks
+  - minecraft:command_block
   - minecraft:conduit
   - minecraft:crafter
   - minecraft:decorated_pot
@@ -30,23 +33,31 @@ restricted-entities:
   - minecraft:jukebox
   - minecraft:lectern
   - minecraft:lodestone
-  - minecraft:piston             # includes moving piston BE
+  - minecraft:piston
+  - minecraft:moving_piston
   - minecraft:respawn_anchor
   - minecraft:sculk_catalyst
   - minecraft:sculk_sensor
   - minecraft:calibrated_sculk_sensor
   - minecraft:sculk_shrieker
   - minecraft:shulker_box
-  - minecraft:sign               # all wood types
-  - minecraft:hanging_sign       # all wood types
-  - minecraft:skull              # player/mob heads & wall variants
+  - minecraft:sign
+  - minecraft:hanging_sign
+  - minecraft:skull
+  - minecraft:mob_head
   - minecraft:smoker
   - minecraft:spawner
+  - minecraft:monster_spawner
   - minecraft:structure_block
   - minecraft:trial_spawner
   - minecraft:vault
   - minecraft:beacon
   - minecraft:barrel
+  - minecraft:note_block
+  - minecraft:comparator
+  - minecraft:daylight_detector
+  - minecraft:suspicious_sand
+  - minecraft:suspicious_gravel
 
 # Only packets for entities within this radius (blocks) of a player are considered.
 radius: 64

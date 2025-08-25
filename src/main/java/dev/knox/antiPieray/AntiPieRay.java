@@ -19,7 +19,7 @@ import java.util.logging.Level;
 
 /**
  * Paper/Folia 1.21 single-file plugin: AntiPieRay
- * <p>
+ *
  * Prevents base-finding via the F3 debug pie by dropping invisible restricted block
  * entity packets before they reach the client. Netty outbound interception + fast ray cast.
  */
@@ -39,7 +39,7 @@ public final class AntiPieRay extends JavaPlugin implements Listener {
 
     // --- Runtime config ---
     private volatile double maxRadiusSq;
-    private final Set<String> restricted = ConcurrentHashMap.newKeySet(96);
+    private final Set<String> restricted = ConcurrentHashMap.newKeySet(128);
     private volatile boolean debug;
     private volatile boolean foliaForceScheduler;
 
@@ -78,22 +78,68 @@ public final class AntiPieRay extends JavaPlugin implements Listener {
         if (getConfig().get(CFG_FOLIA_FORCE) == null) getConfig().set(CFG_FOLIA_FORCE, Boolean.FALSE);
         if (getConfig().get(CFG_DEBUG) == null) getConfig().set(CFG_DEBUG, Boolean.FALSE);
         if (getConfig().get(CFG_RESTRICTED) == null) {
+            // Expanded, near-complete list of vanilla block entity ids (Java Edition, ~1.21)
             getConfig().set(CFG_RESTRICTED, Arrays.asList(
-                    // A near-complete list of block entity ids in modern MC (1.21)
-                    "minecraft:banner", "minecraft:bed", "minecraft:beehive", "minecraft:bell",
-                    "minecraft:blast_furnace", "minecraft:brewing_stand", "minecraft:brushable_block",
-                    "minecraft:campfire", "minecraft:chest", "minecraft:chiseled_bookshelf",
-                    "minecraft:command_block", "minecraft:conduit", "minecraft:crafter",
-                    "minecraft:decorated_pot", "minecraft:dispenser", "minecraft:dropper",
-                    "minecraft:enchanting_table", "minecraft:end_gateway", "minecraft:end_portal",
-                    "minecraft:ender_chest", "minecraft:furnace", "minecraft:hopper",
-                    "minecraft:jigsaw", "minecraft:jukebox", "minecraft:lectern", "minecraft:lodestone",
-                    "minecraft:piston", "minecraft:respawn_anchor", "minecraft:sculk_catalyst",
-                    "minecraft:sculk_sensor", "minecraft:calibrated_sculk_sensor", "minecraft:sculk_shrieker",
-                    "minecraft:shulker_box", "minecraft:sign", "minecraft:hanging_sign", "minecraft:skull",
-                    "minecraft:smoker", "minecraft:spawner", "minecraft:structure_block",
-                    "minecraft:trial_spawner", "minecraft:vault", "minecraft:beacon", "minecraft:barrel",
-                    "minecraft:flower_pot"
+                    "minecraft:banner",
+                    "minecraft:bed",
+                    "minecraft:beehive",
+                    "minecraft:bee_nest",
+                    "minecraft:bell",
+                    "minecraft:blast_furnace",
+                    "minecraft:brewing_stand",
+                    "minecraft:brushable_block",
+                    "minecraft:campfire",
+                    "minecraft:soul_campfire",
+                    "minecraft:chest",
+                    "minecraft:trapped_chest",
+                    "minecraft:chiseled_bookshelf",
+                    "minecraft:command_block",
+                    "minecraft:conduit",
+                    "minecraft:crafter",
+                    "minecraft:decorated_pot",
+                    "minecraft:dispenser",
+                    "minecraft:dropper",
+                    "minecraft:enchanting_table",
+                    "minecraft:end_gateway",
+                    "minecraft:end_portal",
+                    "minecraft:ender_chest",
+                    "minecraft:flower_pot",
+                    "minecraft:furnace",
+                    "minecraft:hopper",
+                    "minecraft:jigsaw",
+                    "minecraft:jukebox",
+                    "minecraft:lectern",
+                    "minecraft:lodestone",
+                    "minecraft:piston",
+                    "minecraft:moving_piston",
+                    "minecraft:respawn_anchor",
+                    "minecraft:sculk_catalyst",
+                    "minecraft:sculk_sensor",
+                    "minecraft:calibrated_sculk_sensor",
+                    "minecraft:sculk_shrieker",
+                    "minecraft:shulker_box",
+                    "minecraft:sign",
+                    "minecraft:hanging_sign",
+                    "minecraft:skull",
+                    "minecraft:mob_head",
+                    "minecraft:smoker",
+                    "minecraft:spawner",
+                    "minecraft:monster_spawner",
+                    "minecraft:structure_block",
+                    "minecraft:trial_spawner",
+                    "minecraft:vault",
+                    "minecraft:beacon",
+                    "minecraft:barrel",
+                    "minecraft:note_block",
+                    "minecraft:comparator",
+                    "minecraft:daylight_detector",
+                    "minecraft:suspicious_sand",
+                    "minecraft:suspicious_gravel",
+                    "minecraft:decorated_pot",
+                    "minecraft:chiseled_bookshelf",
+                    "minecraft:lectern",
+                    "minecraft:end_gateway",
+                    "minecraft:end_portal"
             ));
         }
         saveConfig();
