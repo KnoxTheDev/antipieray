@@ -1,0 +1,16 @@
+name: anti-pieray
+version: '1.0-SNAPSHOT'
+main: dev.knox.antiPieray.AntiPieRay
+api-version: '1.21'
+authors: [ knox ]
+description: blocks military-grade radar for block game.
+folia-supported: true
+commands:
+  antipieray:
+    description: AntiPieRay admin command
+    usage: /antipieray reload
+    permission: antipieray.reload
+permissions:
+  antipieray.reload:
+    description: Allows reloading the AntiPieRay config
+    default: op

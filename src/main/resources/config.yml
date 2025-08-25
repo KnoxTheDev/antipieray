@@ -1,0 +1,64 @@
+# AntiPieRay configuration
+
+# Block entities to filter when they are NOT visible to the player (via ray-cast)
+# This list covers essentially all standard block entities as of 1.21.
+restricted-entities:
+  - minecraft:banner
+  - minecraft:bed
+  - minecraft:beehive            # includes bee nests (same BE type)
+  - minecraft:bell
+  - minecraft:blast_furnace
+  - minecraft:brewing_stand
+  - minecraft:brushable_block    # suspicious sand/gravel
+  - minecraft:campfire           # covers soul campfires
+  - minecraft:chest              # includes trapped/double chests
+  - minecraft:chiseled_bookshelf
+  - minecraft:command_block      # covers repeating/chain command blocks
+  - minecraft:conduit
+  - minecraft:crafter
+  - minecraft:decorated_pot
+  - minecraft:dispenser
+  - minecraft:dropper
+  - minecraft:enchanting_table
+  - minecraft:end_gateway
+  - minecraft:end_portal
+  - minecraft:ender_chest
+  - minecraft:flower_pot
+  - minecraft:furnace
+  - minecraft:hopper
+  - minecraft:jigsaw
+  - minecraft:jukebox
+  - minecraft:lectern
+  - minecraft:lodestone
+  - minecraft:piston             # includes moving piston BE
+  - minecraft:respawn_anchor
+  - minecraft:sculk_catalyst
+  - minecraft:sculk_sensor
+  - minecraft:calibrated_sculk_sensor
+  - minecraft:sculk_shrieker
+  - minecraft:shulker_box
+  - minecraft:sign               # all wood types
+  - minecraft:hanging_sign       # all wood types
+  - minecraft:skull              # player/mob heads & wall variants
+  - minecraft:smoker
+  - minecraft:spawner
+  - minecraft:structure_block
+  - minecraft:trial_spawner
+  - minecraft:vault
+  - minecraft:beacon
+  - minecraft:barrel
+
+# Only packets for entities within this radius (blocks) of a player are considered.
+radius: 64
+
+# Per-player visibility cache (LRU) to reduce repeated ray casts for the same positions.
+visibility-cache-size: 512
+
+# Time (milliseconds) a visibility result is considered fresh before being recomputed.
+visibility-cache-ttl: 5000
+
+# Use Folia-style player scheduler even on Paper (recommended true on Folia servers).
+folia-force-scheduler: false
+
+# Enable verbose logging for troubleshooting (not recommended in production).
+debug: false
